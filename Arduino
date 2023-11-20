@@ -1,0 +1,26 @@
+#define xeksen A1
+#define yeksen A2
+
+void setup() {
+  Serial.begin(9600);
+  
+
+}
+
+void loop() {
+
+  if(Serial.available()>0){
+    if(Serial.read()=='1'){
+      while(2500>5){
+        int X=analogRead(xeksen);
+        int Y=analogRead(yeksen);
+        Serial.println(X);
+        delay(100);
+        Serial.println(Y);
+        delay(100);
+      }
+      
+      
+    }
+  }
+}
