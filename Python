@@ -1,0 +1,55 @@
+import serial
+import time
+import turtle
+
+port=serial.Serial('com6',9600)
+verigirisi=input("Lütfen grafigi baslatmak için a tusuna basin ")
+
+pencere=turtle.Screen()
+pencere.title("joystick")
+pencere.bgcolor('white')
+pencere.setup(400,400)
+
+joystick=turtle.Turtle()
+joystick.color('black')
+joystick.shape('circle')
+joystick.shapesize(5)
+joystick.penup()
+joystick.goto(0,0)
+
+alan=turtle.Turtle()
+alan.color('black')
+alan.shape('circle')
+alan.shapesize(16)
+alan.penup()
+alan.goto(95,85)
+
+alan1=turtle.Turtle()
+alan1.color('white')
+alan1.shape('circle')
+alan1.shapesize(13)
+alan1.penup()
+alan1.goto(95,85)
+while True:
+    pencere.update()
+
+
+    if (verigirisi=="a"):
+        port.write(b'1')
+        x=port.readline()
+        y=port.readline()
+        xstring = x.decode('utf-8')
+        temizx = xstring.strip()
+        xekseni = int(temizx)
+        ystring = y.decode('utf-8')
+        temizy = ystring.strip()
+        yekseni = int(temizy)
+        xekseni=xekseni/6
+        yekseni=yekseni/6
+
+
+
+        print("x ",xekseni)
+        print("y ",yekseni)
+
+        joystick.goto(xekseni,yekseni)
